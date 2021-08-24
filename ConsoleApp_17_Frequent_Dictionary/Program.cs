@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ConsoleApp_17_Frequent_Dictionary
-{
-	class Program
+{   //ConsoleApp_17_Frequent_Dictionary
+    class Program
 	{
 		static void Main(string[] args)
         {
@@ -21,7 +21,7 @@ namespace ConsoleApp_17_Frequent_Dictionary
             Dictionary<string, int> v = t.ReadText();
             IOrderedEnumerable<KeyValuePair<string, int>> word = t.SortDescending(v);
             // t.SortDescending(v);
-           // string word;
+            // string word;
             Console.WriteLine("[ Enter path for file result ]");
             string savefile = Console.ReadLine();
 			//string savefile;
