@@ -9,8 +9,9 @@ namespace ConsoleApp_17_Frequent_Dictionary
 {
 	class Frequent_Dictionary
 	{
-        string dirpath; string[] files;
         Dictionary<string, int> words = new Dictionary<string, int>();
+        string dirpath; string[] files;
+        
 
         public Frequent_Dictionary(string path)
         {
@@ -47,59 +48,56 @@ namespace ConsoleApp_17_Frequent_Dictionary
             }
             return this.words;
         }
-        //Dictionary<string, int> dictionary = new Dictionary<string, int>();
+		//Dictionary<string, int> dictionary = new Dictionary<string, int>();
 
-        //public int OnEvent(HashSet<string> files)
-        //{
+		//public int OnEvent(HashSet<string> files)
+		//{
 
-        //    foreach (var item in files)
-        //    {
+		//    foreach (var item in files)
+		//    {
 
-        //        string[] words = File.ReadAllLines(item);
-        //        foreach (var item1 in words)
-        //        {
-        //            Regex regex = new Regex(@"\w*(( )|(,)|(.)|(1))");
-        //            MatchCollection matches = regex.Matches(item1.ToLower());
-        //            foreach (Match item2 in matches)
-        //            {
-        //                if (dictionary.ContainsKey(item2.Value))
-        //                {
-        //                    dictionary[item2.Value]++;
-        //                }
-        //                else
-        //                {
-        //                    dictionary.Add(item2.Value, 1);
-        //                }
+		//        string[] words = File.ReadAllLines(item);
+		//        foreach (var item1 in words)
+		//        {
+		//            Regex regex = new Regex(@"\w*(( )|(,)|(.)|(1))");
+		//            MatchCollection matches = regex.Matches(item1.ToLower());
+		//            foreach (Match item2 in matches)
+		//            {
+		//                if (dictionary.ContainsKey(item2.Value))
+		//                {
+		//                    dictionary[item2.Value]++;
+		//                }
+		//                else
+		//                {
+		//                    dictionary.Add(item2.Value, 1);
+		//                }
 
 
-        //            }
-        //        }
+		//            }
+		//        }
 
-        //    }
-        //    using (StreamWriter sw = new StreamWriter("Word.txt", false, System.Text.Encoding.Default))
-        //    {
-        //        foreach (var item in dictionary)
-        //        {
-        //            sw.WriteLine(item.Key + " " + item.Value);
+		//    }
+		//    using (StreamWriter sw = new StreamWriter("Word.txt", false, System.Text.Encoding.Default))
+		//    {
+		//        foreach (var item in dictionary)
+		//        {
+		//            sw.WriteLine(item.Key + " " + item.Value);
 
-        //        }
+		//        }
 
-        //    }
-        //    foreach (var item in dictionary)
-        //    {
-        //        Console.WriteLine(item.Key + " " + item.Value);
-        //    }
-        //    return 0;
-        //}
+		//    }
+		//    foreach (var item in dictionary)
+		//    {
+		//        Console.WriteLine(item.Key + " " + item.Value);
+		//    }
+		//    return 0;
+		//}
 
-        public IOrderedEnumerable<KeyValuePair<string, int>> SortDescending(Dictionary<string, int> SD)
-        {
-            return SD.OrderByDescending(i => i.Value);
-        }
-        public int SaveToFile(IOrderedEnumerable<KeyValuePair<string, int>> words, string savefile)
+		
+		public int SaveToFile(IOrderedEnumerable<KeyValuePair<string, int>> words, string savefile)
         {
             //Text file = new Text();
-            ////- Save - сохранение текста в файл
+            ////- Save - сохранение слов в файл
             //public void Save(string path)
             //{
             //    BinaryFormatter binFormat = new BinaryFormatter();
@@ -112,11 +110,11 @@ namespace ConsoleApp_17_Frequent_Dictionary
             try
             {
                 StreamWriter SW = new StreamWriter(savefile + "\\WordResult.txt");
-                foreach (var item in words)
-                {
-                    byte[] array = System.Text.Encoding.Default.GetBytes(item.Key + " " + item.Value); SW.WriteLine(item.ToString());
-                }
-                SW.Close();
+				foreach (var item in words)
+				{
+					byte[] array = System.Text.Encoding.Default.GetBytes(item.Key + "" + item.Value); SW.WriteLine(item.ToString());
+				}
+				SW.Close();
                 Console.WriteLine("[ Word count finish ]");
 
                 return 0;
@@ -128,6 +126,9 @@ namespace ConsoleApp_17_Frequent_Dictionary
 			}
 
 		}
-
-    }
+		public IOrderedEnumerable<KeyValuePair<string, int>> SortDescending(Dictionary<string, int> SD)
+		{
+			return SD.OrderByDescending(i => i.Value);
+		}
+	}
 }

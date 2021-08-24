@@ -20,10 +20,12 @@ namespace ConsoleApp_17_Frequent_Dictionary
             Frequent_Dictionary t = new Frequent_Dictionary(dirpath);
             Dictionary<string, int> v = t.ReadText();
             IOrderedEnumerable<KeyValuePair<string, int>> word = t.SortDescending(v);
-
-            Console.WriteLine("Enter path for file result: ");
+            // t.SortDescending(v);
+           // string word;
+            Console.WriteLine("[ Enter path for file result ]");
             string savefile = Console.ReadLine();
-            t.SaveToFile(word, savefile);
+			//string savefile;
+			t.SaveToFile(word,savefile);
             //D:\WordsTEst
         }
 	}
