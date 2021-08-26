@@ -17,7 +17,6 @@ namespace UnitTestProject
 		[TestMethod]
 		public void TestMethod1()
 		{
-
 			string dirpath = @"D:\WordsTEst";
 			Frequent_Dictionary fd = new Frequent_Dictionary(dirpath);
 			if (fd == null)
@@ -30,38 +29,43 @@ namespace UnitTestProject
 		{
 			string dirpath = Directory.GetCurrentDirectory();
 			Frequent_Dictionary fd = new Frequent_Dictionary(dirpath);
-			Assert.IsFalse(fd.GetFiles.Contains(".txt"));
+			Assert.IsFalse(fd.GetFiles.Contains("WordResult.txt"));
 		}
 		[TestMethod]
 		public void TestMethod3()
 		{
 			string dirpath = Directory.GetCurrentDirectory();
-			Frequent_Dictionary t = new Frequent_Dictionary(dirpath);
-			Dictionary<string, int> v = t.ReadText();
-			IOrderedEnumerable<KeyValuePair<string, int>> vacabulary = t.SortDescending(v);
-			string fileresult = Directory.GetCurrentDirectory();
-			Assert.IsTrue(t.SaveToFile(vacabulary, fileresult) == 0);
+			Frequent_Dictionary fd = new Frequent_Dictionary(dirpath);
+			Dictionary<string, int> v = fd.ReadText();
+			IOrderedEnumerable<KeyValuePair<string, int>> words = fd.SortDescending(v);
+			string savefile = Directory.GetCurrentDirectory();
+			Assert.IsTrue(fd.SaveToFile(words, savefile) == 0);
 
 		}
 		[TestMethod]
 		public void TestMethod4()
 		{
-			// Создаем рандомный массив
-			Random random = new Random();
-			double[] result = new double[100];
-			for (int i = 0; i < result.Length; i++)
-			{
-				result[i] = random.NextDouble();
-			}
-			//// Создаем экземпляр класса
-			//Frequent_Dictionary arr = new Frequent_Dictionary();
-			//// Добавляем все значения в хэш таблицу
+			string dirpath = Directory.GetCurrentDirectory();
+			Frequent_Dictionary fd = new Frequent_Dictionary(dirpath);
+			Dictionary<string, int> v = fd.ReadText();
+			IOrderedEnumerable<KeyValuePair<string, int>> words = fd.SortDescending(v);
+			string savefile = Directory.GetCurrentDirectory();
+			Assert.IsTrue(fd.SaveToFile(words, savefile) == 0);
+
+			//Random random = new Random();
+			//double[] result = new double[100];
+			//for (int i = 0; i < result.Length; i++)
+			//{
+			//	result[i] = random.NextDouble();
+			//}
+
+			//Frequent_Dictionary arr = new Frequent_Dictionary()ж
 			//HashSet<double> hashSet = new HashSet<double>();
 			//for (int i = 0; i < result.Length; i++)
 			//{
 			//	hashSet.Add(result[i]);
 			//}
-			//// Сортируем результатирующий массив методом своего класса
+
 			//arr.SaveToFile(result);
 			//for (int i = 0; i < result.Length; i++)
 			//{
@@ -74,14 +78,15 @@ namespace UnitTestProject
 		[TestMethod]
 		public void TestMethod5()
 		{
-			string path = Directory.GetCurrentDirectory();
-			Frequent_Dictionary t = new Frequent_Dictionary(path);
-			Dictionary<string, int> v = t.ReadText();
-			IOrderedEnumerable<KeyValuePair<string, int>> vacabulary = t.SortDescending(v);
+			string dirpath = Directory.GetCurrentDirectory();
+			Frequent_Dictionary fd = new Frequent_Dictionary(dirpath);
+			Dictionary<string, int> v = fd.ReadText();
+			IOrderedEnumerable<KeyValuePair<string, int>> vacabulary = fd.SortDescending(v);
+			
 
-			//Assert.IsTrue(vacabulary.First().Value > vacabulary.Last().Value);
 			//using (FileStream fs = File.OpenRead("test.txt"))
 			//{
+			//  Assert.IsTrue(vacabulary.First().Value > vacabulary.Last().Value);
 			//	byte[] temp = new byte[fs.Length];
 			//	fs.Read(temp, 0, temp.Length);
 			//	string[] text = (System.Text.Encoding.Default.GetString(temp)).Split();
@@ -110,18 +115,39 @@ namespace UnitTestProject
 		[TestMethod]
 		public void TestMethod6()
 		{
+			string dirpath = Directory.GetCurrentDirectory();
+
+			Frequent_Dictionary fd = new Frequent_Dictionary(dirpath);
+			Dictionary<string, int> v = fd.ReadText();
+
+			IOrderedEnumerable<KeyValuePair<string, int>> vacabulary = fd.SortDescending(v);
+			Assert.IsFalse(v.First().Value > v.Last().Value);
 		}
 		[TestMethod]
 		public void TestMethod7()
 		{
+			
+			string dirpath = Directory.GetCurrentDirectory();
+			Frequent_Dictionary t = new Frequent_Dictionary(dirpath);
+			//Dictionary<string, int> v = t.ReadText();
+			Assert.IsFalse(t.GetFiles == null);
 		}
 		[TestMethod]
 		public void TestMethod8()
 		{
+
+			string dirpath = Directory.GetCurrentDirectory();
+			Frequent_Dictionary fd = new Frequent_Dictionary(dirpath);
+			Assert.IsNotNull(fd.ReadText());
+			Dictionary<string, int> v = fd.ReadText();
+			Assert.IsTrue(fd.SortDescending(v) != null);
 		}
 		[TestMethod]
 		public void TestMethod9()
 		{
+			string dirpath = Directory.GetCurrentDirectory();
+			Frequent_Dictionary fd = new Frequent_Dictionary(dirpath);
+			Assert.IsNotNull(fd);
 		}
 		[TestMethod]
 		public void TestMethod10()
